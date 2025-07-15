@@ -1,0 +1,107 @@
+/*
+  PYLO Image With Text Overlay Section CSS
+  - All colors and spacing use global CSS variables (see theme.liquid)
+  - BEM-style class names
+  - Responsive and accessible
+  - No static color values; fully dynamic and merchant-editable
+  - Original structure, not copied from Dawn
+*/
+
+.pylo-image-with-text-overlay {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  width: 100%;
+  padding: var(--section-vertical-spacing, 4rem) 0;
+}
+
+.pylo-image-with-text-overlay__media {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.pylo-image-with-text-overlay__img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 1rem;
+  display: block;
+}
+
+.pylo-image-with-text-overlay__overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--color-overlay, #000);
+  opacity: var(--overlay-opacity, 0.4);
+  border-radius: 1rem;
+  pointer-events: none;
+}
+
+.pylo-image-with-text-overlay__content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: var(--color-foreground);
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  padding: 2rem 1rem;
+  background: rgba(255,255,255,0.0);
+}
+
+.pylo-image-with-text-overlay__heading {
+  font-size: var(--font-heading-size, 2.5rem);
+  font-family: var(--font-heading-family, inherit);
+  font-weight: var(--font-heading-weight, 700);
+  margin-bottom: 1rem;
+  color: var(--color-foreground);
+}
+
+.pylo-image-with-text-overlay__subheading {
+  font-size: var(--font-body-size, 1.25rem);
+  font-family: var(--font-body-family, inherit);
+  margin-bottom: 1.5rem;
+  color: var(--color-foreground);
+}
+
+.pylo-image-with-text-overlay__button {
+  display: inline-block;
+  background: var(--color-accent, #222);
+  color: var(--color-background, #fff);
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.pylo-image-with-text-overlay__button:hover,
+.pylo-image-with-text-overlay__button:focus {
+  background: var(--color-accent-hover, #444);
+  color: var(--color-background, #fff);
+}
+
+@media (max-width: 900px) {
+  .pylo-image-with-text-overlay__img {
+    height: 250px;
+  }
+  .pylo-image-with-text-overlay__content {
+    padding: 1rem 0.5rem;
+  }
+  .pylo-image-with-text-overlay__heading {
+    font-size: var(--font-heading-size-mobile, 1.5rem);
+  }
+  .pylo-image-with-text-overlay__subheading {
+    font-size: var(--font-body-size-mobile, 1rem);
+  }
+} 

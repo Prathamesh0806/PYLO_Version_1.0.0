@@ -1,0 +1,35 @@
+{%- comment -%}
+PYLO Product Recommendations Section
+Now uses only global color scheme variables for all colors. All static color settings removed. Styling is fully dynamic and merchant-editable via theme settings. See theme.liquid for color scheme variables.
+Modular CSS for this section is loaded below.
+{%- endcomment -%}
+
+{{ 'section-pylo-product-recommendations.css' | asset_url | stylesheet_tag }}
+
+<section class="pylo-product-recommendations">
+  <h2 class="pylo-product-recommendations__heading">{{ section.settings.heading }}</h2>
+  <div class="pylo-product-recommendations__products">
+    {%- for product in recommendations.products limit: section.settings.product_limit -%}
+      <div class="pylo-product-recommendations__product">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image | image_url: '400x' }}" alt="{{ product.title }}" />
+          <div class="pylo-product-recommendations__product-title">{{ product.title }}</div>
+          <div class="pylo-product-recommendations__product-price">{{ product.price | money }}</div>
+        </a>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PYLO Recommendations",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "You may also like" },
+    { "type": "range", "id": "product_limit", "label": "Number of products", "min": 2, "max": 8, "step": 1, "default": 4 }
+  ],
+  "presets": [
+    { "name": "Product Recommendations" }
+  ]
+}
+{% endschema %} 

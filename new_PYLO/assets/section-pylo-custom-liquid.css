@@ -1,0 +1,45 @@
+/*
+  PYLO Custom Liquid Section CSS
+  - All colors and spacing use global CSS variables (see theme.liquid)
+  - BEM-style class names
+  - Responsive and accessible
+  - No static color values; fully dynamic and merchant-editable
+  - Original structure, not copied from Dawn
+*/
+
+.pylo-custom-liquid {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  width: 100%;
+  padding: var(--section-vertical-spacing, 4rem) 0;
+}
+
+.pylo-custom-liquid__heading {
+  font-size: var(--font-heading-size, 2rem);
+  font-family: var(--font-heading-family, inherit);
+  font-weight: var(--font-heading-weight, 700);
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--color-foreground);
+}
+
+.pylo-custom-liquid__content {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: var(--font-body-size, 1.125rem);
+  font-family: var(--font-body-family, inherit);
+  color: var(--color-foreground);
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .pylo-custom-liquid {
+    padding: var(--section-vertical-spacing-mobile, 2rem) 0;
+  }
+  .pylo-custom-liquid__heading {
+    font-size: var(--font-heading-size-mobile, 1.25rem);
+  }
+  .pylo-custom-liquid__content {
+    font-size: var(--font-body-size-mobile, 1rem);
+  }
+} 

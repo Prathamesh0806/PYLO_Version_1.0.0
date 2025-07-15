@@ -1,0 +1,44 @@
+{%- comment -%}
+PYLO Featured Blog Section
+Now uses only global color scheme variables for all colors. All static color settings removed. Styling is fully dynamic and merchant-editable via theme settings. See theme.liquid for color scheme variables.
+Modular CSS for this section is loaded below.
+{%- endcomment -%}
+
+{{ 'section-pylo-featured-blog.css' | asset_url | stylesheet_tag }}
+
+<section class="pylo-featured-blog">
+  <h2 class="pylo-featured-blog__heading">{{ section.settings.heading }}</h2>
+  <div class="pylo-featured-blog__posts">
+    {%- assign blog = blogs[section.settings.blog] -%}
+    {%- if blog != blank -%}
+      {%- for article in blog.articles limit: section.settings.post_limit -%}
+        <article class="pylo-featured-blog__post">
+          <a href="{{ article.url }}">
+            {%- if article.image -%}
+              <img src="{{ article.image | image_url: '400x' }}" alt="{{ article.title }}" />
+            {%- endif -%}
+            <div class="pylo-featured-blog__post-title">{{ article.title }}</div>
+            <div class="pylo-featured-blog__post-excerpt">{{ article.excerpt | strip_html | truncate: 100 }}</div>
+            <div class="pylo-featured-blog__post-date">{{ article.published_at | date: '%b %d, %Y' }}</div>
+          </a>
+        </article>
+      {%- endfor -%}
+    {%- else -%}
+      <p>No blog selected or blog is empty.</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PYLO Featured Blog",
+  "settings": [
+    { "type": "blog", "id": "blog", "label": "Blog" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Latest News" },
+    { "type": "range", "id": "post_limit", "label": "Number of posts", "min": 2, "max": 6, "step": 1, "default": 3 }
+  ],
+  "presets": [
+    { "name": "Featured Blog" }
+  ]
+}
+{% endschema %} 

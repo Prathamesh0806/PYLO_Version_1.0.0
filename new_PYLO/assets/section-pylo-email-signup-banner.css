@@ -1,0 +1,92 @@
+/*
+  PYLO Email Signup Banner Section CSS
+  - All colors and spacing use global CSS variables (see theme.liquid)
+  - BEM-style class names
+  - Responsive and accessible
+  - No static color values; fully dynamic and merchant-editable
+  - Original structure, not copied from Dawn
+*/
+
+.pylo-email-signup-banner {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  width: 100%;
+  padding: var(--section-vertical-spacing, 4rem) 0;
+  text-align: center;
+}
+
+.pylo-email-signup-banner__heading {
+  font-size: var(--font-heading-size, 2rem);
+  font-family: var(--font-heading-family, inherit);
+  font-weight: var(--font-heading-weight, 700);
+  margin-bottom: 1rem;
+  color: var(--color-foreground);
+}
+
+.pylo-email-signup-banner__subheading {
+  font-size: var(--font-body-size, 1.125rem);
+  font-family: var(--font-body-family, inherit);
+  margin-bottom: 2rem;
+  color: var(--color-foreground);
+}
+
+.pylo-email-signup-banner__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.pylo-email-signup-banner__form input[type="email"] {
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
+  border: 1px solid var(--color-border, #ccc);
+  font-size: 1rem;
+  font-family: var(--font-body-family, inherit);
+  color: var(--color-foreground);
+  background: var(--color-background-secondary, #fff);
+  outline: none;
+  transition: border 0.2s;
+  width: 220px;
+}
+
+.pylo-email-signup-banner__form input[type="email"]:focus {
+  border-color: var(--color-accent, #222);
+}
+
+.pylo-email-signup-banner__submit {
+  background: var(--color-accent, #222);
+  color: var(--color-background, #fff);
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.pylo-email-signup-banner__submit:hover,
+.pylo-email-signup-banner__submit:focus {
+  background: var(--color-accent-hover, #444);
+  color: var(--color-background, #fff);
+}
+
+@media (max-width: 600px) {
+  .pylo-email-signup-banner {
+    padding: var(--section-vertical-spacing-mobile, 2rem) 0;
+  }
+  .pylo-email-signup-banner__form {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .pylo-email-signup-banner__heading {
+    font-size: var(--font-heading-size-mobile, 1.25rem);
+  }
+  .pylo-email-signup-banner__subheading {
+    font-size: var(--font-body-size-mobile, 1rem);
+  }
+} 

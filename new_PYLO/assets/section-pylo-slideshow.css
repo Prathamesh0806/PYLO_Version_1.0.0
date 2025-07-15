@@ -1,0 +1,95 @@
+/*
+  PYLO Slideshow Section CSS
+  - All colors and spacing use global CSS variables (see theme.liquid)
+  - BEM-style class names
+  - Responsive and accessible
+  - No static color values; fully dynamic and merchant-editable
+  - Original structure, not copied from Dawn
+*/
+
+.pylo-slideshow {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.pylo-slideshow__wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pylo-slideshow__slide {
+  min-width: 100vw;
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+.pylo-slideshow__content {
+  background: rgba(0,0,0,0.3);
+  color: var(--color-foreground);
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  max-width: 90vw;
+}
+
+.pylo-slideshow__heading {
+  font-size: var(--font-heading-size, 2.5rem);
+  font-family: var(--font-heading-family, inherit);
+  font-weight: var(--font-heading-weight, 700);
+  margin-bottom: 1rem;
+  color: var(--color-foreground);
+}
+
+.pylo-slideshow__subheading {
+  font-size: var(--font-body-size, 1.25rem);
+  font-family: var(--font-body-family, inherit);
+  margin-bottom: 1.5rem;
+  color: var(--color-foreground);
+}
+
+.pylo-slideshow__button {
+  display: inline-block;
+  background: var(--color-accent, #222);
+  color: var(--color-background, #fff);
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.pylo-slideshow__button:hover,
+.pylo-slideshow__button:focus {
+  background: var(--color-accent-hover, #444);
+  color: var(--color-background, #fff);
+}
+
+@media (max-width: 750px) {
+  .pylo-slideshow__slide {
+    height: 40vh;
+  }
+  .pylo-slideshow__content {
+    padding: 1rem;
+  }
+  .pylo-slideshow__heading {
+    font-size: var(--font-heading-size-mobile, 1.5rem);
+  }
+  .pylo-slideshow__subheading {
+    font-size: var(--font-body-size-mobile, 1rem);
+  }
+} 

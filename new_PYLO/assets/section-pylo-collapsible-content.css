@@ -1,0 +1,82 @@
+/*
+  PYLO Collapsible Content Section CSS (FAQ/Accordion)
+  - All colors and spacing use global CSS variables (see theme.liquid)
+  - BEM-style class names
+  - Responsive and accessible
+  - No static color values; fully dynamic and merchant-editable
+  - Original structure, not copied from Dawn
+*/
+
+.pylo-collapsible-content {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  width: 100%;
+  padding: var(--section-vertical-spacing, 4rem) 0;
+}
+
+.pylo-collapsible-content__heading {
+  font-size: var(--font-heading-size, 2rem);
+  font-family: var(--font-heading-family, inherit);
+  font-weight: var(--font-heading-weight, 700);
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--color-foreground);
+}
+
+.pylo-collapsible-content__items {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pylo-collapsible-content__item {
+  border-bottom: 1px solid var(--color-border, #e5e5e5);
+}
+
+.pylo-collapsible-content__title {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--color-foreground);
+  font-size: var(--font-body-size, 1.125rem);
+  font-family: var(--font-body-family, inherit);
+  font-weight: 600;
+  text-align: left;
+  padding: 1.25rem 0;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pylo-collapsible-content__title[aria-expanded="true"] {
+  color: var(--color-accent, #222);
+}
+
+.pylo-collapsible-content__body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4,0,0.2,1);
+  color: var(--color-foreground);
+  font-size: var(--font-body-size, 1rem);
+  font-family: var(--font-body-family, inherit);
+  padding: 0 0 0 0;
+}
+
+.pylo-collapsible-content__title[aria-expanded="true"] + .pylo-collapsible-content__body {
+  max-height: 500px;
+  padding: 0 0 1.25rem 0;
+}
+
+@media (max-width: 600px) {
+  .pylo-collapsible-content {
+    padding: var(--section-vertical-spacing-mobile, 2rem) 0;
+  }
+  .pylo-collapsible-content__heading {
+    font-size: var(--font-heading-size-mobile, 1.25rem);
+  }
+  .pylo-collapsible-content__body {
+    font-size: var(--font-body-size-mobile, 0.95rem);
+  }
+} 

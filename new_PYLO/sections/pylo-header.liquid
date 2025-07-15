@@ -1,0 +1,34 @@
+{%- comment -%}
+PYLO Header Section
+Announcement bar removed. Uses global color scheme for dynamic styling.
+{%- endcomment -%}
+
+<section class="pylo-header" style="background: var(--color-background); color: var(--color-foreground);">
+  <div class="pylo-header__main">
+    <a href="/" class="pylo-header__logo">
+      {%- if section.settings.logo != blank -%}
+        <img src="{{ section.settings.logo | image_url }}" alt="{{ shop.name }}" />
+      {%- else -%}
+        <span>{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+    <nav class="pylo-header__nav">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <a href="{{ link.url }}" class="pylo-header__nav-link">{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PYLO Header",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "link_list", "id": "menu", "label": "Main menu" }
+  ],
+  "presets": [
+    { "name": "Header" }
+  ]
+}
+{% endschema %} 

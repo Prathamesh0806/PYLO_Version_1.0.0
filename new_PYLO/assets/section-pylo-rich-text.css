@@ -1,0 +1,44 @@
+/*
+  PYLO Rich Text Section CSS
+  - All colors and spacing use global CSS variables (see theme.liquid)
+  - BEM-style class names
+  - Responsive and accessible
+  - No static color values; fully dynamic and merchant-editable
+  - Original structure, not copied from Dawn
+*/
+
+.pylo-rich-text {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--section-vertical-spacing, 4rem) 0;
+  text-align: center;
+  width: 100%;
+}
+
+.pylo-rich-text__heading {
+  font-size: var(--font-heading-size, 2.5rem);
+  font-family: var(--font-heading-family, inherit);
+  font-weight: var(--font-heading-weight, 700);
+  margin-bottom: 1.5rem;
+  color: var(--color-foreground);
+}
+
+.pylo-rich-text__text {
+  font-size: var(--font-body-size, 1.125rem);
+  font-family: var(--font-body-family, inherit);
+  color: var(--color-foreground);
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+@media (max-width: 750px) {
+  .pylo-rich-text {
+    padding: var(--section-vertical-spacing-mobile, 2rem) 0;
+  }
+  .pylo-rich-text__heading {
+    font-size: var(--font-heading-size-mobile, 1.75rem);
+  }
+  .pylo-rich-text__text {
+    font-size: var(--font-body-size-mobile, 1rem);
+  }
+} 

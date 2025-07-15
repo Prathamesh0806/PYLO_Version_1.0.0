@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.background_color | default: '#ffffff' }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="{{ shop.meta_description | escape }}">
+    <meta name="keywords" content="{{ shop.meta_keywords | escape }}">
+    <meta name="author" content="{{ shop.name }}">
+    <title>{% if title %}{{ title }} - {% endif %}{{ shop.name }}</title>
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="icon" href="{{ 'favicon.ico' | asset_url }}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+    <!-- Preload critical assets for performance -->
+    <link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
+    <link rel="preload" as="script" href="{{ 'theme.js' | asset_url }}">
+    <!-- Dynamic CSS Variables for Color Schemes and Typography -->
+    <style>
+      {% for scheme in settings.color_schemes %}
+        .color-{{ scheme.id }} {
+            --color-background: rgb({{ scheme.settings.background_color.red }}, {{ scheme.settings.background_color.green }}, {{ scheme.settings.background_color.blue }});
+            {% if scheme.settings.background_gradient_color != blank %}
+                --gradient-background: {{ scheme.settings.background_gradient_color }};
+            {% else %}
+                --gradient-background: rgb({{ scheme.settings.background_color.red }}, {{ scheme.settings.background_color.green }}, {{ scheme.settings.background_color.blue }});
+            {% endif %}
+            --color-foreground: rgb({{ scheme.settings.text_color.red }}, {{ scheme.settings.text_color.green }}, {{ scheme.settings.text_color.blue }});
+            --color-shadow: rgb({{ scheme.settings.shadow_color.red }}, {{ scheme.settings.shadow_color.green }}, {{ scheme.settings.shadow_color.blue }});
+            --color-button: rgb({{ scheme.settings.button_color.red }}, {{ scheme.settings.button_color.green }}, {{ scheme.settings.button_color.blue }});
+            --color-button-text: rgb({{ scheme.settings.button_label_color.red }}, {{ scheme.settings.button_label_color.green }}, {{ scheme.settings.button_label_color.blue }});
+            --color-secondary-button: rgb({{ scheme.settings.background_color.red }}, {{ scheme.settings.background_color.green }}, {{ scheme.settings.background_color.blue }});
+            --color-secondary-button-text: rgb({{ scheme.settings.secondary_button_label_color.red }}, {{ scheme.settings.secondary_button_label_color.green }}, {{ scheme.settings.secondary_button_label_color.blue }});
+            --color-link: rgb({{ scheme.settings.secondary_button_label_color.red }}, {{ scheme.settings.secondary_button_label_color.green }}, {{ scheme.settings.secondary_button_label_color.blue }});
+        }
+      {% endfor %}
+      body {
+        color: rgba(var(--color-foreground), 0.75);
+        background-color: rgb(var(--color-background));
+      }
+      {{ settings.main_body_font | font_face: font_display: 'swap' }}
+      {{ settings.main_header_font | font_face: font_display: 'swap' }}
+      :root {
+        --main-body-font-family: {{ settings.main_body_font.family }}, {{ settings.main_body_font.fallback_families }};
+        --main-body-font-style: {{ settings.main_body_font.style }};
+        --main-body-font-weight: {{ settings.main_body_font.weight }};
+        --main-heading-font-family: {{ settings.main_header_font.family }}, {{ settings.main_header_font.fallback_families }};
+        --main-heading-font-style: {{ settings.main_header_font.style }};
+        --main-heading-font-weight: {{ settings.main_header_font.weight }};
+        --main-body-font-size: {{ settings.body_size | divided_by: 10.0 }}rem;
+        --main-heading-font-size: {{ settings.heading_size | divided_by: 10.0 }}rem;
+        --container_width: {{ settings.container_width | default: 140 }}rem;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: var(--main-heading-font-family);
+        font-size: var(--main-heading-font-size);
+      }
+    </style>
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "{{ shop.name }}",
+        "url": "{{ shop.url }}",
+        "logo": "{{ 'logo.png' | asset_url }}"
+      }
+    </script>
+    {{ content_for_header }}
+  </head>
+  <body class="template-{{ template | handle }}">
+    <a class="skip-to-content-link" href="#MainContent">{{ 'accessibility.skip_to_content' | t }}</a>
+    {% section 'pylo-header' %}
+    <main id="MainContent" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+    {% section 'pylo-footer' %}
+    <noscript>
+      <div class="no-js-warning">{{ 'general.no_js_warning' | t }}</div>
+    </noscript>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+    <!-- Predictive search and localization scripts (if needed) -->
+    <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'localization.js' | asset_url }}" defer="defer"></script>
+    {{ content_for_footer }}
+  </body>
+</html> 

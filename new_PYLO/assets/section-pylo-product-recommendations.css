@@ -1,0 +1,101 @@
+/*
+  PYLO Product Recommendations Section CSS
+  - All colors and spacing use global CSS variables (see theme.liquid)
+  - BEM-style class names
+  - Responsive and accessible
+  - No static color values; fully dynamic and merchant-editable
+  - Original structure, not copied from Dawn
+*/
+
+.pylo-product-recommendations {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  width: 100%;
+  padding: var(--section-vertical-spacing, 4rem) 0;
+}
+
+.pylo-product-recommendations__heading {
+  font-size: var(--font-heading-size, 2rem);
+  font-family: var(--font-heading-family, inherit);
+  font-weight: var(--font-heading-weight, 700);
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--color-foreground);
+}
+
+.pylo-product-recommendations__products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pylo-product-recommendations__product {
+  background: var(--color-background-secondary, var(--color-background));
+  color: var(--color-foreground);
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  flex: 1 1 220px;
+  min-width: 180px;
+  max-width: 300px;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: box-shadow 0.2s;
+}
+
+.pylo-product-recommendations__product:hover,
+.pylo-product-recommendations__product:focus-within {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.pylo-product-recommendations__product img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  background: var(--color-background);
+}
+
+.pylo-product-recommendations__product-title {
+  font-size: var(--font-body-size, 1.125rem);
+  font-family: var(--font-body-family, inherit);
+  color: var(--color-foreground);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.pylo-product-recommendations__product-price {
+  font-size: 1rem;
+  color: var(--color-accent, #222);
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 900px) {
+  .pylo-product-recommendations__products {
+    gap: 1rem;
+  }
+  .pylo-product-recommendations__product {
+    min-width: 140px;
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .pylo-product-recommendations__products {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .pylo-product-recommendations__product {
+    max-width: 100%;
+    min-width: 0;
+    padding: 1rem 0.5rem;
+  }
+} 

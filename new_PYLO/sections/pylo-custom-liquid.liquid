@@ -1,0 +1,29 @@
+{%- comment -%}
+PYLO Custom Liquid Section
+Now uses only global color scheme variables for all colors. All static color settings removed. Styling is fully dynamic and merchant-editable via theme settings. See theme.liquid for color scheme variables.
+Modular CSS for this section is loaded below.
+{%- endcomment -%}
+
+{{ 'section-pylo-custom-liquid.css' | asset_url | stylesheet_tag }}
+
+<section class="pylo-custom-liquid">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="pylo-custom-liquid__heading">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+  <div class="pylo-custom-liquid__content">
+    {{ section.settings.custom_liquid }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PYLO Custom Liquid",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "liquid", "id": "custom_liquid", "label": "Custom Liquid/HTML" }
+  ],
+  "presets": [
+    { "name": "Custom Liquid" }
+  ]
+}
+{% endschema %} 

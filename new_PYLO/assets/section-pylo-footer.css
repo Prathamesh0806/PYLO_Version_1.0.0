@@ -1,0 +1,59 @@
+/* PYLO Footer Section Styles - Dynamic via global color scheme */
+.pylo-footer {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  width: 100%;
+  padding: 2.4rem 0 1.2rem 0;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+}
+.pylo-footer__main {
+  max-width: var(--container_width, 140rem);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+.pylo-footer__logo img {
+  max-height: 48px;
+  width: auto;
+  display: block;
+}
+.pylo-footer__text {
+  font-size: 1.4rem;
+  color: var(--color-foreground);
+  text-align: center;
+}
+.pylo-footer__social {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.8rem;
+}
+.pylo-footer__social-link {
+  color: var(--color-link, #006adc);
+  text-decoration: none;
+  font-size: 1.6rem;
+  padding: 0.3em 0.8em;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+.pylo-footer__social-link:hover,
+.pylo-footer__social-link:focus {
+  background: var(--color-link, #006adc);
+  color: var(--color-button-text, #fff);
+}
+@media (max-width: 600px) {
+  .pylo-footer__main {
+    padding: 0 0.5rem;
+  }
+  .pylo-footer__logo img {
+    max-height: 36px;
+  }
+  .pylo-footer__text {
+    font-size: 1.2rem;
+  }
+  .pylo-footer__social-link {
+    font-size: 1.3rem;
+    padding: 0.2em 0.5em;
+  }
+} 

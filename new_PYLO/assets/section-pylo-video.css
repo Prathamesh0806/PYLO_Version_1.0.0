@@ -1,0 +1,100 @@
+/*
+  PYLO Video Section CSS
+  - All colors and spacing use global CSS variables (see theme.liquid)
+  - BEM-style class names
+  - Responsive and accessible
+  - No static color values; fully dynamic and merchant-editable
+  - Original structure, not copied from Dawn
+*/
+
+.pylo-video {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  width: 100%;
+  padding: var(--section-vertical-spacing, 4rem) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pylo-video__media {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 2rem auto;
+  display: flex;
+  justify-content: center;
+}
+
+.pylo-video__element {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 1rem;
+  background: var(--color-background-secondary, #000);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.pylo-video__content {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.pylo-video__heading {
+  font-size: var(--font-heading-size, 2rem);
+  font-family: var(--font-heading-family, inherit);
+  font-weight: var(--font-heading-weight, 700);
+  margin-bottom: 1rem;
+  color: var(--color-foreground);
+}
+
+.pylo-video__subheading {
+  font-size: var(--font-body-size, 1.125rem);
+  font-family: var(--font-body-family, inherit);
+  margin-bottom: 1.5rem;
+  color: var(--color-foreground);
+}
+
+.pylo-video__button {
+  display: inline-block;
+  background: var(--color-accent, #222);
+  color: var(--color-background, #fff);
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.pylo-video__button:hover,
+.pylo-video__button:focus {
+  background: var(--color-accent-hover, #444);
+  color: var(--color-background, #fff);
+}
+
+@media (max-width: 900px) {
+  .pylo-video__media {
+    max-width: 100%;
+  }
+  .pylo-video__element {
+    max-width: 100%;
+  }
+  .pylo-video__content {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .pylo-video {
+    padding: var(--section-vertical-spacing-mobile, 2rem) 0;
+  }
+  .pylo-video__heading {
+    font-size: var(--font-heading-size-mobile, 1.25rem);
+  }
+  .pylo-video__subheading {
+    font-size: var(--font-body-size-mobile, 1rem);
+  }
+} 

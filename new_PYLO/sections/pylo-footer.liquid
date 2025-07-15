@@ -1,0 +1,48 @@
+{%- comment -%}
+PYLO Footer Section
+Now uses only global color scheme variables for all colors.
+{%- endcomment -%}
+
+<footer class="pylo-footer" style="background: var(--color-background); color: var(--color-foreground);">
+  <div class="pylo-footer__main">
+    <a href="/" class="pylo-footer__logo">
+      {%- if section.settings.logo != blank -%}
+        <img src="{{ section.settings.logo | image_url }}" alt="{{ shop.name }}" />
+      {%- else -%}
+        <span>{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+    <div class="pylo-footer__text">{{ section.settings.footer_text }}</div>
+    <div class="pylo-footer__social">
+      {%- if section.settings.facebook_url != blank -%}
+        <a href="{{ section.settings.facebook_url }}" class="pylo-footer__social-link" target="_blank" rel="noopener">Facebook</a>
+      {%- endif -%}
+      {%- if section.settings.instagram_url != blank -%}
+        <a href="{{ section.settings.instagram_url }}" class="pylo-footer__social-link" target="_blank" rel="noopener">Instagram</a>
+      {%- endif -%}
+      {%- if section.settings.twitter_url != blank -%}
+        <a href="{{ section.settings.twitter_url }}" class="pylo-footer__social-link" target="_blank" rel="noopener">Twitter</a>
+      {%- endif -%}
+      {%- if section.settings.youtube_url != blank -%}
+        <a href="{{ section.settings.youtube_url }}" class="pylo-footer__social-link" target="_blank" rel="noopener">YouTube</a>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "PYLO Footer",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "text", "id": "footer_text", "label": "Footer text", "default": "© {{ 'now' | date: '%Y' }} PYLO. All rights reserved." },
+    { "type": "text", "id": "facebook_url", "label": "Facebook URL" },
+    { "type": "text", "id": "instagram_url", "label": "Instagram URL" },
+    { "type": "text", "id": "twitter_url", "label": "Twitter URL" },
+    { "type": "text", "id": "youtube_url", "label": "YouTube URL" }
+  ],
+  "presets": [
+    { "name": "Footer" }
+  ]
+}
+{% endschema %} 

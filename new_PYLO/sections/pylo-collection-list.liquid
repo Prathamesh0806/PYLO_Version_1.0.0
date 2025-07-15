@@ -1,0 +1,50 @@
+{%- comment -%}
+PYLO Collection List Section
+Now uses only global color scheme variables for all colors. All static color settings removed. Styling is fully dynamic and merchant-editable via theme settings. See theme.liquid for color scheme variables.
+Modular CSS for this section is loaded below.
+{%- endcomment -%}
+
+{{ 'section-pylo-collection-list.css' | asset_url | stylesheet_tag }}
+
+<section class="pylo-collection-list">
+  <h2 class="pylo-collection-list__heading">{{ section.settings.heading }}</h2>
+  <div class="pylo-collection-list__items">
+    {%- for block in section.blocks -%}
+      {%- assign collection = collections[block.settings.collection] -%}
+      <div class="pylo-collection-list__item">
+        <a href="{{ collection.url }}">
+          {%- if block.settings.image != blank -%}
+            <img src="{{ block.settings.image | image_url: '400x' }}" alt="{{ block.settings.title | default: collection.title }}" />
+          {%- elsif collection.featured_image -%}
+            <img src="{{ collection.featured_image | image_url: '400x' }}" alt="{{ block.settings.title | default: collection.title }}" />
+          {%- endif -%}
+          <div class="pylo-collection-list__item-title">{{ block.settings.title | default: collection.title }}</div>
+        </a>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PYLO Collection List",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by Collection" }
+  ],
+  "blocks": [
+    {
+      "type": "collection_item",
+      "name": "Collection",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "title", "label": "Custom title" },
+        { "type": "image_picker", "id": "image", "label": "Custom image" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    { "name": "Collection List", "blocks": [ { "type": "collection_item" }, { "type": "collection_item" }, { "type": "collection_item" } ] }
+  ]
+}
+{% endschema %} 

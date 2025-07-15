@@ -1,0 +1,33 @@
+{%- comment -%}
+PYLO Email Signup Banner Section
+Now uses only global color scheme variables for all colors. All static color settings removed. Styling is fully dynamic and merchant-editable via theme settings. See theme.liquid for color scheme variables.
+Modular CSS for this section is loaded below.
+{%- endcomment -%}
+
+{{ 'section-pylo-email-signup-banner.css' | asset_url | stylesheet_tag }}
+
+<section class="pylo-email-signup-banner">
+  <h2 class="pylo-email-signup-banner__heading">{{ section.settings.heading }}</h2>
+  <p class="pylo-email-signup-banner__subheading">{{ section.settings.subheading }}</p>
+  <form method="post" action="/contact#newsletter" id="newsletter_form" accept-charset="UTF-8" class="pylo-email-signup-banner__form">
+    <input type="hidden" name="form_type" value="customer" />
+    <input type="hidden" name="utf8" value="✓" />
+    <input type="email" name="contact[email]" placeholder="{{ section.settings.placeholder }}" required />
+    <button type="submit" class="pylo-email-signup-banner__submit">{{ section.settings.button_label }}</button>
+  </form>
+</section>
+
+{% schema %}
+{
+  "name": "PYLO Email Signup Banner",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Subscribe to our newsletter" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Get the latest updates and offers." },
+    { "type": "text", "id": "placeholder", "label": "Email placeholder", "default": "Enter your email" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Subscribe" }
+  ],
+  "presets": [
+    { "name": "Email Signup Banner" }
+  ]
+}
+{% endschema %} 

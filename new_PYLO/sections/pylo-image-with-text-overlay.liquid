@@ -1,0 +1,42 @@
+{%- comment -%}
+PYLO Image With Text Overlay Section
+Now uses only global color scheme variables for all colors and overlay. All static color settings removed. Styling is fully dynamic and merchant-editable via theme settings. See theme.liquid for color scheme variables.
+Modular CSS for this section is loaded below.
+{%- endcomment -%}
+
+{{ 'section-pylo-image-with-text-overlay.css' | asset_url | stylesheet_tag }}
+
+<section class="pylo-image-with-text-overlay">
+  <div class="pylo-image-with-text-overlay__media">
+    {%- if section.settings.image != blank -%}
+      <img src="{{ section.settings.image | image_url }}" alt="{{ section.settings.heading }}" class="pylo-image-with-text-overlay__img" />
+      {%- if section.settings.overlay -%}
+        <div class="pylo-image-with-text-overlay__overlay"></div>
+      {%- endif -%}
+    {%- endif -%}
+    <div class="pylo-image-with-text-overlay__content">
+      <h2 class="pylo-image-with-text-overlay__heading">{{ section.settings.heading }}</h2>
+      <p class="pylo-image-with-text-overlay__subheading">{{ section.settings.subheading }}</p>
+      {%- if section.settings.button_label != blank and section.settings.button_url != blank -%}
+        <a href="{{ section.settings.button_url }}" class="pylo-image-with-text-overlay__button">{{ section.settings.button_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PYLO Img With Overlay",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Our Story" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Discover the inspiration behind our brand." },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_url", "label": "Button URL" },
+    { "type": "checkbox", "id": "overlay", "label": "Show overlay", "default": true }
+  ],
+  "presets": [
+    { "name": "Image With Text Overlay" }
+  ]
+}
+{% endschema %} 
